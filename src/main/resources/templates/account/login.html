@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<body>
+    <section layout:fragment="content">
+        <div class="card text-center">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="true" href="#">Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Đăng ký</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="card-body text-start">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="username" class="form-label" style="text-align: left;">Email address</label>
+                        <input type="text" name="username" class="form-control" id="username"
+                            aria-describedby="username">
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <div class="text-center">
+                    <span th:unless="${error}" th:text="${success}" style="color: green;"></span>
+                    <span th:if="${error}" th:text="${error}" style="color: red;"></span>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
