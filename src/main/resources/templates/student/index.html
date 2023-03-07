@@ -9,6 +9,14 @@
             <input name="name" />
             <div>Điểm trung bình</div>
             <input name="mark" />
+            <div>Quốc Tịch</div>
+            <select th:field="*{student.nationality}">
+                <option value="America">America</option>
+                <option value="Japan">Japan</option>
+                <option value="China">China</option>
+                
+            </select>
+            </br>
             <div>Chuyên ngành</div>
             <label>
                 <input name="major" type="radio" value="Công nghệ phần mềm" />
@@ -18,6 +26,35 @@
             <label>
                 <input name="major" type="radio" value="Thiết kế trang web" />
                 Thiết kế trang web
+            </label>
+            <br>
+            <label>
+                <input name="major" type="radio" value="Bảo Mật Thông Tin" />
+                Bảo Mật Thông Tin
+            </label>
+            <div>Chức danh</div>
+            <select multiple th:field="*{student.title}">
+                <option value="CEO">CEO</option>
+                <option value="Director">Director</option>
+                <option value="Voice Director">Voice Director</option>
+                
+            </select>
+            <div>Sở Thích</div>
+            <label>
+                <input name="favorite" type="checkbox" value="Traveling" />
+                Traveling
+            </label>
+            <label>
+                <input name="favorite" type="checkbox" value="Music" />
+                Music
+            </label>
+            <label>
+                <input name="favorite" type="checkbox" value="Sport" />
+                Sport
+            </label>
+            <label>
+                <input name="favorite" type="checkbox" value="Reading" />
+                Reading
             </label>
             <hr>
             <button>Lưu</button>
@@ -29,7 +66,9 @@
                 <li th:text="${'Họ tên sinh viên: '+student.name}"></li>
                 <li th:text="${'Điểm số: '+student.mark}"></li>
                 <li th:text="${'Chuyên ngành: '+student.major}"></li>
-
+                <li th:text="${'Quốc Tịch: '+student.nationality}"></li>
+                <li th:text="${'Quốc Tịch: '+student.title}"></li>
+                <li th:text="${'Sở Thích: '+student.favorite}"></li>
             </ul>
         </span>
 

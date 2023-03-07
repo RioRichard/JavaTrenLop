@@ -12,8 +12,8 @@ import com.example.demo.model.Student;
 public class StudentController {
     
     @GetMapping("/student")
-    public String name() {
-        
+    public String name(@ModelAttribute("student") Student student, Model model) {
+        model.addAttribute("student", student);
         return "student/index";
     }
 

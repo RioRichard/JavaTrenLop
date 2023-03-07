@@ -12,4 +12,7 @@ public class Student {
     private String name;
     private String mark;
     private String major;
+    private String nationality;
+    private String title;
+    private String favorite;
 }
