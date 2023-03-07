@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<body>
+    <section layout:fragment="content">
+        <form method="post" action="/dict/add" enctype="multipart/form-data">
+            <h2>THÊM TỪ MỚI</h2>
+            <!-- <h3 style="color:red" th:text="${message}"></h3> -->
+            <table>
+                <tr>
+                    <td>Từ mới</td>
+                    <td>
+                        <input type="text" name="eng">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ý nghĩa</td>
+                    <td>
+                        <!-- <form:input id="desId" path="description" /> -->
+                        <input type="text" name="vie">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hình ảnh</td>
+                    <td>
+                        <!-- <form:input id="form" path="description" /> -->
+                        <input type="file" name="file">
+                    </td>
+                </tr>
+                <tr style="text-align: right">
+                    <td colspan="2">
+                        <input type="submit" value="Thêm từ" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+       
+
+    </section>
+</body>
+
+</html>

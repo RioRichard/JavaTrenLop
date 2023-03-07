@@ -10,15 +10,12 @@
             <div>Điểm trung bình</div>
             <input name="mark" />
             <div>Chuyên ngành</div>
-            <label>
-                <input name="major" type="radio" value="Công nghệ phần mềm" />
-                Công nghệ phần mềm
-            </label>
-            <br>
-            <label>
-                <input name="major" type="radio" value="Thiết kế trang web" />
-                Thiết kế trang web
-            </label>
+            <label for="majors"></label>
+            <select name="major" id="majors">
+                <th:block th:each="major : ${majors}">
+                    <option th:value="${major}" th:text="${major}"></option>
+                </th:block>
+            </select>
             <hr>
             <button>Lưu</button>
         </form>
