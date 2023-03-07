@@ -90,33 +90,33 @@ public class StudentController {
         return "student/addword";
     }
 
-    @PostMapping("/dict/add")
+    // @PostMapping("/dict/add")
 
-    public String serveFile(@ModelAttribute(value = "word") Word newWord, HttpServletRequest request, Model model) {
+    // public String serveFile(@ModelAttribute(value = "word") Word newWord, HttpServletRequest request, Model model) {
 
-        if (dicts.get(newWord.getEng()) == null) {
-            MultipartFile img = newWord.getFile();
-            String fileName=StringUtils.cleanPath(img.getOriginalFilename());
-            String uploadDir="./src/main/resources/static/Image/ImageProduct/";
+    //     if (dicts.get(newWord.getEng()) == null) {
+    //         MultipartFile img = newWord.getFile();
+    //         String fileName=StringUtils.cleanPath(img.getOriginalFilename());
+    //         String uploadDir="./src/main/resources/static/Image/ImageProduct/";
 
-            Path uploadPath=Paths.get(uploadDir);
+    //         Path uploadPath=Paths.get(uploadDir);
     
-            if(!Files.exists(uploadPath))
-            {
-                Files.createDirectories(uploadPath);
-            }
-            try {
-                InputStream inputStream=img.getInputStream();
-            Path filepPath=uploadPath.resolve(fileName);
-            copy = Files.copy(inputStream,filepPath, StandardCopyOption.REPLACE_EXISTING);
+    //         if(!Files.exists(uploadPath))
+    //         {
+    //             Files.createDirectories(uploadPath);
+    //         }
+    //         try {
+    //             InputStream inputStream=img.getInputStream();
+    //         Path filepPath=uploadPath.resolve(fileName);
+    //         copy = Files.copy(inputStream,filepPath, StandardCopyOption.REPLACE_EXISTING);
 
-            dicts.put(newWord.getEng(), newWord.getVie());
-            return "redirect:/dict";
-        } else {
-            model.addAttribute("message", "Từ đã tồn tại!!!");
-            return "/dict/add";
-        }
+    //         dicts.put(newWord.getEng(), newWord.getVie());
+    //         return "redirect:/dict";
+    //     } else {
+    //         model.addAttribute("message", "Từ đã tồn tại!!!");
+    //         return "/dict/add";
+    //     }
 
-    }
+    // }
 
 }
