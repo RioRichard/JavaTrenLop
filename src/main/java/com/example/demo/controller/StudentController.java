@@ -44,36 +44,24 @@ public class StudentController {
         return "student/index";
     }
 
-    @GetMapping("/student/index")
-    public String indexEL(Model model) {
+    @GetMapping("/index2")
+    public String indexEL2(Model model) {
         List<Student> students = new ArrayList<>();
-        students.add(new Student("Phạm Trần Anh Khôi","khoi.jpg",1));
-        students.add(new Student("Vũ Tuấn Khoa","khoa.jpg",2));
-        students.add(new Student("Trương Thiên Bảo","bao.jpg",3));
-        students.add(new Student("Lê Phạm Quốc Thái","thai.jpg",4));
-        students.add(new Student("Phùng Ngọc Thành","thanh.jpg",5));
+        Student sv1 = new Student("Phạm Minh Tuấn", "5.5", "Ứng dụng phần mềm");
+        Student sv2 = new Student("Nguyễn Thị Kiều Oanh", "9.5", "Thiết kế trang web");
+        Student sv3 = new Student("Lê Phạm Tuấn Kiệt", "3.5", "Thiết kế trang web");
 
+        students.add(sv1);
+        students.add(sv2);
+        students.add(sv3);
 
         model.addAttribute("students",students);
-        model.addAttribute("salary",1000);
 
-        return "student/indexEL";
+
+        return "student/index2";
     }
 
-//    @GetMapping("/student/index2")
-//    public String indexEL(Model model) {
-//        List<Student> students = new ArrayList<>();
-//        students.add(new Student("Phạm Trần Anh Khôi", "khoi.jpg"));
-//        students.add(new Student("Vũ Tuấn Khoa", "khoa.png"));
-//        students.add(new Student("Trương Thiên Bảo", "bao.png"));
-//        students.add(new Student("Lê Phạm Quốc Thái", "thai.png"));
-//        students.add(new Student("Phùng Ngọc Thành", "thanh.png"));
-//
-//
-//        model.addAttribute("students", students);
-//        model.addAttribute("salary", 1000);
-//        return "student/indexEL2";
-//    }
+
 
     @PostMapping("/student")
     public String post(@ModelAttribute("student") Student student, Model model) {

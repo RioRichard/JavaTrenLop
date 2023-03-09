@@ -14,6 +14,13 @@ public class Student {
         this.img = img;
         this.level=lv;
     }
+
+    public Student(String name, String mark, String major) {
+        this.name = name;
+        this.mark = mark;
+        this.major = major;
+    }
+
     private int level;
     private String name;
     private String mark;
