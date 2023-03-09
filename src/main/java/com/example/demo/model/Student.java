@@ -15,7 +15,7 @@ public class Student {
         this.level=lv;
     }
 
-    public Student(String name, String mark, String major) {
+    public Student(String name, double mark, String major) {
         this.name = name;
         this.mark = mark;
         this.major = major;
@@ -23,7 +23,7 @@ public class Student {
 
     private int level;
     private String name;
-    private String mark;
+    private double mark;
     private String major;
     private String nationality;
     private String title;

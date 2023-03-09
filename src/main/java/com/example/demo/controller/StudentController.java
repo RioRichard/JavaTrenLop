@@ -47,9 +47,9 @@ public class StudentController {
     @GetMapping("/index2")
     public String indexEL2(Model model) {
         List<Student> students = new ArrayList<>();
-        Student sv1 = new Student("Phạm Minh Tuấn", "5.5", "Ứng dụng phần mềm");
-        Student sv2 = new Student("Nguyễn Thị Kiều Oanh", "9.5", "Thiết kế trang web");
-        Student sv3 = new Student("Lê Phạm Tuấn Kiệt", "3.5", "Thiết kế trang web");
+        Student sv1 = new Student("Phạm Minh Tuấn", 5.5, "Ứng dụng phần mềm");
+        Student sv2 = new Student("Nguyễn Thị Kiều Oanh", 9.5, "Thiết kế trang web");
+        Student sv3 = new Student("Lê Phạm Tuấn Kiệt", 3.5, "Thiết kế trang web");
 
         students.add(sv1);
         students.add(sv2);

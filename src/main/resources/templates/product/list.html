@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<body>
+    <section layout:fragment="content">
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th,
+            td {
+                line-height: 25px;
+                border: 1px solid black;
+                padding: 5px;
+            }
+
+            th {
+                background-color: gray;
+            }
+        </style>
+
+        <h1>EL & JSTL</h1>
+        <table>
+            <tr>
+                <th>Tên SP</th>
+                <th>Giá cũ</th>
+                <th>Giảm giá</th>
+                <th>Giá mới</th>
+            </tr>
+            <th:block th:each="prod : ${prods}">
+                <tr>
+                    <td th:text="${prod.name}"></td>
+                    <td th:text="${#numbers.formatCurrency(prod.unitPrice)}"></td>
+                    <td th:text="${prod.discount} +' %'"></td>
+                    <td th:text="${#numbers.formatCurrency(prod.newPrice)}"></td>
+                </tr>
+            </th:block>
+        </table>
+    </section>
+</body>
+
+</html>

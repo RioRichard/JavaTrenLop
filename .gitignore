@@ -33,4 +33,5 @@ build/
 .vscode/
 
 ### Private file ###
-.static/images
+
+src/main/resources/static/images
