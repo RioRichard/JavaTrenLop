@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<body>
+    <section layout:fragment="content">
+        <th:block th:text="${message}"></th:block>
+        <form method="post">
+            <p><input name="from" placeholder="From"></p>
+            <p><input name="to" placeholder="To"></p>
+            <p><input name="subject" placeholder="Subject"></p>
+            <p><textarea name="body" placeholder="Body" rows="3" cols="30"></textarea></p>
+
+            <button>Send</button>
+        </form>
+    </section>
+</body>
+
+</html>
