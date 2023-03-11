@@ -35,3 +35,7 @@ build/
 ### Private file ###
 
 src/main/resources/static/images
+src/main/resources/static/photo
+src/main/resources/static/cv
+
+
