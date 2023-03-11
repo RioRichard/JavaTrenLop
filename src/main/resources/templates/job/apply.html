@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<body>
+    <section layout:fragment="content">
+        <p>
+        <h3>Thông tin cá nhân</h3>
+        <img th:src="@{'/photo/'+${photo_name}}">
+        <br>
+        <h3 th:text="${param.fullname}"></h3>
+        </p>
+        <p>
+        <h3>Hồ sơ xin việc</h3>
+        <ul>
+            <li th:text="'File Name: ' + ${cv_name}"></li>
+            <li th:text="'File Type: ' + ${cv_type}"></li>
+            <li th:text="'File Size: ' + ${cv_size}"></li>
+
+        
+        </ul>
+        </p>
+    </section>
+</body>
+
+</html>
