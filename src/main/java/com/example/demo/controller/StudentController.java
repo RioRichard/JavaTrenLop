@@ -43,6 +43,21 @@ public class StudentController {
         model.addAttribute("student", student);
         return "student/index";
     }
+    @GetMapping("/student/index")
+    public String indexEL(Model model) {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Phạm Trần Anh Khôi","khoi.jpg",1));
+        students.add(new Student("Vũ Tuấn Khoa","khoa.jpg",2));
+        students.add(new Student("Trương Thiên Bảo","bao.jpg",3));
+        students.add(new Student("Lê Phạm Quốc Thái","thai.jpg",4));
+        students.add(new Student("Phùng Ngọc Thành","thanh.jpg",5));
+
+
+        model.addAttribute("students",students);
+        model.addAttribute("salary",1000);
+
+        return "student/indexEL";
+    }
 
     @GetMapping("/index2")
     public String indexEL2(Model model) {
