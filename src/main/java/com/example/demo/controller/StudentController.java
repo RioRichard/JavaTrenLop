@@ -1,11 +1,5 @@
 package com.example.demo.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,15 +7,13 @@ import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.example.demo.model.Student;
 import com.example.demo.model.Word;
+import com.example.demo.service.StorageService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -43,18 +35,18 @@ public class StudentController {
         model.addAttribute("student", student);
         return "student/index";
     }
+
     @GetMapping("/student/index")
     public String indexEL(Model model) {
         List<Student> students = new ArrayList<>();
-        students.add(new Student("Phạm Trần Anh Khôi","khoi.jpg",1));
-        students.add(new Student("Vũ Tuấn Khoa","khoa.jpg",2));
-        students.add(new Student("Trương Thiên Bảo","bao.jpg",3));
-        students.add(new Student("Lê Phạm Quốc Thái","thai.jpg",4));
-        students.add(new Student("Phùng Ngọc Thành","thanh.jpg",5));
+        students.add(new Student("Phạm Trần Anh Khôi", "khoi.jpg", 1));
+        students.add(new Student("Vũ Tuấn Khoa", "khoa.jpg", 2));
+        students.add(new Student("Trương Thiên Bảo", "bao.jpg", 3));
+        students.add(new Student("Lê Phạm Quốc Thái", "thai.jpg", 4));
+        students.add(new Student("Phùng Ngọc Thành", "thanh.jpg", 5));
 
-
-        model.addAttribute("students",students);
-        model.addAttribute("salary",1000);
+        model.addAttribute("students", students);
+        model.addAttribute("salary", 1000);
 
         return "student/indexEL";
     }
@@ -70,13 +62,10 @@ public class StudentController {
         students.add(sv2);
         students.add(sv3);
 
-        model.addAttribute("students",students);
-
+        model.addAttribute("students", students);
 
         return "student/index2";
     }
-
-
 
     @PostMapping("/student")
     public String post(@ModelAttribute("student") Student student, Model model) {
@@ -126,33 +115,26 @@ public class StudentController {
         return "student/addword";
     }
 
-    // @PostMapping("/dict/add")
+    @PostMapping("/dict/add")
 
-    // public String serveFile(@ModelAttribute(value = "word") Word newWord, HttpServletRequest request, Model model) {
+    public String serveFile(@ModelAttribute(value = "word") Word newWord, HttpServletRequest request, Model model) {
 
-    //     if (dicts.get(newWord.getEng()) == null) {
-    //         MultipartFile img = newWord.getFile();
-    //         String fileName=StringUtils.cleanPath(img.getOriginalFilename());
-    //         String uploadDir="./src/main/resources/static/Image/ImageProduct/";
+        if (dicts.get(newWord.getEng()) == null) {
 
-    //         Path uploadPath=Paths.get(uploadDir);
-    
-    //         if(!Files.exists(uploadPath))
-    //         {
-    //             Files.createDirectories(uploadPath);
-    //         }
-    //         try {
-    //             InputStream inputStream=img.getInputStream();
-    //         Path filepPath=uploadPath.resolve(fileName);
-    //         copy = Files.copy(inputStream,filepPath, StandardCopyOption.REPLACE_EXISTING);
+            try {
+                StorageService.copyFile("./src/main/resources/static/images", newWord.getFile());
+            } catch (Exception e) {
+                model.addAttribute("message", "Khong the them hinh!!!");
 
-    //         dicts.put(newWord.getEng(), newWord.getVie());
-    //         return "redirect:/dict";
-    //     } else {
-    //         model.addAttribute("message", "Từ đã tồn tại!!!");
-    //         return "/dict/add";
-    //     }
+            }
 
-    // }
+            dicts.put(newWord.getEng(), newWord.getVie());
+            return "redirect:/dict";
+        } else {
+            model.addAttribute("message", "Từ đã tồn tại!!!");
+            return "/dict/add";
+        }
+
+    }
 
 }

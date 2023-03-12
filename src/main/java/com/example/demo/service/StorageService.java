@@ -1,24 +1,34 @@
 package com.example.demo.service;
 
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
 import org.springframework.core.io.Resource;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 
-public interface StorageService {
+public class StorageService {
+	public static void copyFile(String uploadDir, MultipartFile file) throws Exception {
+        try {
+            String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
-	void init();
+            Path uploadPath = Paths.get(uploadDir);
 
-	void store(MultipartFile file);
-
-	Stream<Path> loadAll();
-
-	Path load(String filename);
-
-	Resource loadAsResource(String filename);
-
-	void deleteAll();
+            if (!Files.exists(uploadPath)) {
+                Files.createDirectories(uploadPath);
+            }
+            InputStream inputStream = file.getInputStream();
+            Path filepPath = uploadPath.resolve(fileName);
+            Files.copy(inputStream, filepPath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+	
 
 }

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.service.StorageService;
+
 @Controller
 @RequestMapping("/job/")
 public class JobController {
@@ -40,8 +42,8 @@ public class JobController {
             model.addAttribute("message", "Vui lòng chọn file !");
         } else {
             try {
-                copyFile("./src/main/resources/static/cv", cv);
-                copyFile("./src/main/resources/static/photo", photo);
+                StorageService.copyFile("./src/main/resources/static/cv", cv);
+                StorageService.copyFile("./src/main/resources/static/photo", photo);
                 model.addAttribute("fullname",fullname);
                 model.addAttribute("photo_name", photo.getOriginalFilename());
                 model.addAttribute("cv_name", cv.getOriginalFilename());
@@ -58,20 +60,5 @@ public class JobController {
 
     }
 
-    private void copyFile(String uploadDir, MultipartFile file) throws Exception {
-        try {
-            String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-
-            Path uploadPath = Paths.get(uploadDir);
-
-            if (!Files.exists(uploadPath)) {
-                Files.createDirectories(uploadPath);
-            }
-            InputStream inputStream = file.getInputStream();
-            Path filepPath = uploadPath.resolve(fileName);
-            Files.copy(inputStream, filepPath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (Exception e) {
-            throw e;
-        }
-    }
+    
 }
