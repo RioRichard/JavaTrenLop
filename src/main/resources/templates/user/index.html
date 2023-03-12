@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<body>
+    <section layout:fragment="content">
+        <table class="table table-hover">
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Fullname</th>
+                <th></th>
+            </tr>
+            <th:block th:each="u : ${users}" >
+                <tr>
+                    <td th:text="${u.username}"></td>
+                    <td th:text="${u.pass}"></td>
+                    <td th:text="${u.fullname}"></td>
+                    <td><a th:href="'user/delete/'+${u.username}">Delete</a></td>
+                </tr>
+            </th:block>
+        </table>
+
+        <a href="/user/insert" class="btn btn-primary">Insert</a>
+
+    </section>
+</body>
+
+</html>

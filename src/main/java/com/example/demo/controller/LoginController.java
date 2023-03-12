@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.model.User;
+import com.example.demo.model.Users;
 
 @Controller
 
@@ -20,7 +20,7 @@ public class LoginController {
     }
 
     @PostMapping("/")
-    public String loginHandle(@ModelAttribute("user") User user, Model model) {
+    public String loginHandle(@ModelAttribute("user") Users user, Model model) {
         System.out.println(user.getPass() + "=============" + user.getUsername());
         if (user.getPass().equals("admin") && user.getUsername().equals("admin")) {
             model.addAttribute("success", "Thành công");

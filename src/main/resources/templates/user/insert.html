@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<body>
+    <section layout:fragment="content">
+        <form method="post">
+            <div>
+                <label>Username</label>
+                <input type="text" name="username" />
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="text" name="pass" />
+            </div>
+            <div>
+                <label>Fullname</label>
+                <input type="text" name="fullname" />
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Insert</button>
+            </div>
+        </form>
+
+    </section>
+</body>
+
+</html>

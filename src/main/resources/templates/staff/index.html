@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<body>
+    <section layout:fragment="content">
+        <table class="table table-hover">
+            <tr>
+                <th>Mã NV</th>
+                <th>Họ và tên</th>
+                <th>Giới tính</th>
+                <th>Phòng</th>
+            </tr>
+            <th:block th:each="s: ${staffs}">
+                <tr>
+                    <td th:text="${s.id}"></td>
+                    <td th:text="${s.fullname}"></td>
+                    <td th:text="${s.gender}? 'Nam':'Nữ'"></td>
+                    <td th:text="${s.depart.name}"></td>
+                </tr>
+            </th:block>
+        </table>
+    </section>
+</body>
+
+</html>
