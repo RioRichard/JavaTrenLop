@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<body>
+    <section layout:fragment="content">
+        <th:block th:text="${message}"/>
+        <form method="post">
+            <div>
+                <label>Nhân viên</label>
+                <input type="text" name="staff.id" itemLabel="name" />
+
+            </div>
+            <div>
+                <label>Loại</label>
+                <input type="radio" name="type" value="true" label="Thành tích" />
+                <input type="radio" name="type" value="false" label="Kỷ luật" />
+            </div>
+            <div>
+                <label>Lý do</label>
+                <textarea name="reason" rows=”3” ></textarea>
+            </div>
+
+            <div>
+                <button>Insert</button>
+            </div>
+        </form>
+
+    </section>
+</body>
+
+</html>
