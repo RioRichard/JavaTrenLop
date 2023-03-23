@@ -6,7 +6,7 @@
     <section layout:fragment="content">
         <p>
         <h3>Thông tin cá nhân</h3>
-        <img th:src="@{'/photo/'+${photo_name}}">
+        <img width="200px" th:src="@{'/photo/'+${photo_name}}">
         <br>
         <h3 th:text="${param.fullname}"></h3>
         </p>
