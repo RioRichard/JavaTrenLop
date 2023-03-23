@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+    layout:decorate="~{layout}">
 
 <body>
-<section layout:fragment="content">
-    <style>
-div{
-display: inline-block;
-text-align: center;
-margin: 5px;
-padding:5px;
-border: 1px dotted orangered;
-border-radius: 5px;
-}
+    <section layout:fragment="content">
+        <style>
+            div {
+                display: inline-block;
+                text-align: center;
+                margin: 5px;
+                padding: 5px;
+                border: 1px dotted orangered;
+                border-radius: 5px;
+            }
+        </style>
 
-    </style>
+        <h1>Quản lý sinh viên</h1>
+        <p>Thông tin thành viên nhóm</p>
+        <form method="post" enctype="multipart/form-data">
+            <th:block th:each="student:${students}">
 
-    <h1>EL & JSTL</h1>
-    <th:block th:each="student:${students}">
+                <div>
+                    <img th:src="@{'/images/'+${student.img}}" th:alt="${student.name}" width="200px">
 
-        <div>
-            <img th:src="@{'/images/'+${student.img}}" th:alt="${student.name}" width="200px">
-
-            <br>
-
-
-            <strong th:text="${student.name}"></strong>
-            <em th:text="${salary}*${student.level}"></em>
-        </div>
-    </th:block>
+                    <br>
 
 
-</section>
+                    <strong th:text="${student.name}"></strong>
+                    <em th:text="${salary}*${student.level}"></em>
+                </div>
+            </th:block>
+            <label for="img">Hình ảnh</label>
+            <input type="file" name="img" id="img">
+            <label for="grp">Nhóm</label>
+            <input type="text" name="grp" id="grp">
+            <label for="major">Chuyên ngành</label>
+            <input type="text" name="major" id="major">
+            <label for="course"></label>
+            <input type="text" name="course" id="course">
+            <label for="img">Chuyên ngành</label>
+            <input type="text" name="major" id="major">
+        </form>
+
+
+
+
+    </section>
 </body>
 
 </html>

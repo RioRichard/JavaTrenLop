@@ -38,5 +38,35 @@ public class UserController {
         }
         return getAll(model);
     }
+
+    @GetMapping("login")
+    public String login() {
+        return "account/login";
+    }
+    @GetMapping("logoff")
+    public String logoff() {
+        return "job/form";
+    }
+    @GetMapping("register")
+    public String register() {
+        return "job/form";
+    }
+    @GetMapping("activate")
+    public String activate() {
+        return "job/form";
+    }
+    @GetMapping("forgot-password")
+    public String forgot() {
+        return "job/form";
+    }
+    @GetMapping("change-password")
+    public String change() {
+        return "job/form";
+    }
+    @GetMapping("edit-profile")
+    public String edit() {
+        return "job/form";
+    }
+    
     
 }
