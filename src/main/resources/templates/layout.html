@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    >
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
     <meta charset="utf-8">
@@ -11,9 +10,14 @@
 </head>
 
 <body>
+    <div>
+        <th:block th:each="m:${majors}">
+            <a th:href="'major/'+${m.id}" th:text="${m.name}"></a>
+        </th:block>
+    </div>
     <div class="container">
         <section layout:fragment="content">
-        
+
         </section>
     </div>
 

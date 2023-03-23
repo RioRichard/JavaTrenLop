@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.example.demo.model.Student;
+import com.example.demo.model.StudentTest;
 import com.example.demo.model.Word;
 import com.example.demo.service.StorageService;
 
@@ -146,5 +149,9 @@ public class StudentController {
         }
 
     }
+
+    
+    
+    
 
 }

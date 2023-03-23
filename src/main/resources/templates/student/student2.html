@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<body>
+    <section layout:fragment="content">
+        <style>
+            div {
+                display: inline-block;
+                text-align: center;
+                margin: 5px;
+                padding: 5px;
+                border: 1px dotted orangered;
+                border-radius: 5px;
+            }
+        </style>
+
+        <h1>EL & JSTL</h1>
+        <th:block th:each="student:${students}">
+
+            <div>
+                <img th:src="@{'/images/'+${student.img}}" th:alt="${student.name}" width="200px">
+
+                <br>
+
+
+                <strong th:text="${student.name}"></strong>
+                <em th:text="${salary}*${student.level}"></em>
+            </div>
+        </th:block>
+
+
+    </section>
+</body>
+
+</html>
