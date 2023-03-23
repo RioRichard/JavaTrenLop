@@ -44,11 +44,11 @@ public class StudentController {
     @GetMapping("/student/index")
     public String indexEL(Model model) {
         List<Student> students = new ArrayList<>();
-        students.add(new Student("Phạm Trần Anh Khôi", "khoi.jpg", 1));
-        students.add(new Student("Vũ Tuấn Khoa", "khoa.jpg", 2));
-        students.add(new Student("Trương Thiên Bảo", "bao.jpg", 3));
-        students.add(new Student("Lê Phạm Quốc Thái", "thai.jpg", 4));
-        students.add(new Student("Phùng Ngọc Thành", "thanh.jpg", 5));
+        // students.add(new Student("Phạm Trần Anh Khôi", "khoi.jpg", 1));
+        // students.add(new Student("Vũ Tuấn Khoa", "khoa.jpg", 2));
+        // students.add(new Student("Trương Thiên Bảo", "bao.jpg", 3));
+        // students.add(new Student("Lê Phạm Quốc Thái", "thai.jpg", 4));
+        // students.add(new Student("Phùng Ngọc Thành", "thanh.jpg", 5));
 
         model.addAttribute("students", students);
         model.addAttribute("salary", 1000);
@@ -59,9 +59,9 @@ public class StudentController {
     @GetMapping("/index2")
     public String indexEL2(Model model) {
         List<Student> students = new ArrayList<>();
-        Student sv1 = new Student("Phạm Minh Tuấn", 5.5, "Ứng dụng phần mềm");
-        Student sv2 = new Student("Nguyễn Thị Kiều Oanh", 9.5, "Thiết kế trang web");
-        Student sv3 = new Student("Lê Phạm Tuấn Kiệt", 3.5, "Thiết kế trang web");
+        Student sv1 = new Student("Trương Thiên Bảo", 7.5, "Ứng dụng phần mềm");
+        Student sv2 = new Student("Lê Phạm QUốc Thái", 9, "Thiết kế trang web");
+        Student sv3 = new Student("Phùng Ngọc Thành", 8.5, "Thiết kế trang web");
 
         students.add(sv1);
         students.add(sv2);
@@ -72,12 +72,20 @@ public class StudentController {
         return "student/index2";
     }
 
-    @PostMapping("/student")
-    public String post(@ModelAttribute("student") Student student, Model model) {
 
+    @PostMapping("/student")
+    public String post(@ModelAttribute("student") @Valid Student student, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "student/index";
+        }
+        System.out.println(result);
         model.addAttribute("student", student);
-        String[] major = { "Công nghệ phần mềm", "Thiết kế web" };
-        model.addAttribute("majors", major);
+        try {
+            StorageService.copyFile("./src/main/resources/static/images", student.getImg());
+        } catch (Exception e) {
+            model.addAttribute("message", "Khong the them hinh!!!");
+
+        }
         return "student/index";
     }
 
